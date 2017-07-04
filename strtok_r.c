@@ -1,4 +1,4 @@
-char *strtok_safe(char *text, const char delimitor, char **save_this)
+char *strtok_r(char *text, const char delimitor, char **save_this)
 {
     if(save_this == NULL)
     {
