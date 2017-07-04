@@ -1,12 +1,16 @@
-char *strtok_safe_newline(char *text, char **save_this)
+char *strtok_safe(char *text, const char delimitor, char **save_this)
 {
+    if(save_this == NULL)
+    {
+        return NULL;
+    }
     if (text != NULL)
     {
         /* New text. */
         int i = 0;
-        while(text[i] != '\0') 
+        while(text[i] != '\0')
         {
-            if(text[i] == '\n')
+            if(text[i] == delimitor)
             {
                 text[i] = '\0';
                 *save_this = &text[i + 1];
@@ -22,7 +26,7 @@ char *strtok_safe_newline(char *text, char **save_this)
         char *start = *save_this;
         while((*save_this)[i] != '\0')
         {
-            if((*save_this)[i] == '\n')
+            if((*save_this)[i] == delimitor)
             {
                 (*save_this)[i] = '\0';
                 *save_this = &((*save_this)[i + 1]);
